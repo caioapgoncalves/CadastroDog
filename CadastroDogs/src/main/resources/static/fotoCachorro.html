@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerador de Cachorros</title>
+    <style>
+        /* (Seu CSS continua o mesmo) */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        img {
+            max-width: 500px;
+            max-height: 500px;
+            border: 5px solid #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+<h1>Cadastro salvo com sucesso!</h1>
+<h1>Acertamos?? Esse é seu cachorro?</h1>
+
+<p>Você será redirecionado para a página principal em 3 segundos...</p>
+
+<img id="imagem-cachorro" src="" alt="Carregando foto...">
+
+<script>
+    window.onload = function() {
+
+        // Função para redirecionar
+        function redirecionarParaHome() {
+            // Redireciona para a página principal (a lista de cachorros)
+            window.location.href = "/";
+        }
+
+        // Define o tempo (3000 milissegundos = 3 segundos)
+        const tempoDeEspera = 3000;
+
+        fetch('/api/cachorro')
+            .then(response => response.json())
+            .then(data => {
+                // Coloca a imagem na tela
+                const imgElement = document.getElementById('imagem-cachorro');
+                imgElement.src = data.message;
+                imgElement.alt = "Foto de um cachorro";
+
+                // *** MUDANÇA PRINCIPAL ***
+                // Inicia o temporizador APÓS carregar a imagem
+                setTimeout(redirecionarParaHome, tempoDeEspera);
+            })
+            .catch(error => {
+                console.error('Erro ao buscar imagem:', error);
+                document.getElementById('imagem-cachorro').alt = "Erro ao carregar imagem.";
+
+                // Inicia o temporizador mesmo se a API de fotos falhar
+                // (para o usuário não ficar preso na página)
+                setTimeout(redirecionarParaHome, tempoDeEspera);
+            });
+    };
+</script>
+
+</body>
+</html>
