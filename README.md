@@ -3,15 +3,6 @@
 Um **CRUD completo** desenvolvido para **cadastro, visualização, edição e exclusão** de informações sobre cachorros, utilizando **Spring Boot**, **Thymeleaf** e integração com a **DOG API** 🐶.
 
 ---
-
-## 👥 Autores
-
-- **Caio Augusto Poleto Gonçalves – 04723-063**  
-- **Felipe Inácio de Barros Sousa – 04723-044**  
-- **Paulo Henrique Sant’Anna Marques – 04723-069**
-
----
-
 ## 📝 Descrição do Projeto
 
 O **Sistema de Gerenciamento de Cachorros** é uma aplicação web desenvolvida em **Java Spring Boot** para cadastrar, listar, editar e excluir informações sobre cachorros.  
